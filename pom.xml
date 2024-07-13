@@ -4,7 +4,6 @@
 		 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.liquibase</groupId>
-    <artifactId>liquibase</artifactId>
 	<packaging>pom</packaging>
     <version>1.0</version>
     <artifactId>liquibase-core</artifactId>
@@ -15,29 +14,48 @@
 
 <profiles>
 	<profile>
-		<build>
-			<plugins>
-			  <plugin>
-				<groupId>org.liquibase</groupId>
-				<artifactId>liquibase-maven-plugin</artifactId>
-				<configuration>
-					<changelogfile>\Test\changelog\master.xml</changelogfile>
-					<driver>oracle.jdbc.driver.OracleDriver</driver>
-					<url>jdbc:oracle:thin:@localhost:1521:xe</url>
-					<username>HR</username>
-					<password>HR</password>
-				</configuration>
-				
-			  </plugin>
-			</plugins>
-		  </build>
+		<id>prof1</id>
+			<build>
+				<plugins>
+				  <plugin>
+					<groupId>org.liquibase</groupId>
+					<artifactId>liquibase-maven-plugin</artifactId>
+					<configuration>
+						<changelogfile>\Test\changelog\master.xml</changelogfile>
+						<driver>oracle.jdbc.driver.OracleDriver</driver>
+						<url>jdbc:oracle:thin:@localhost:1521:xe</url>
+						<username>HR</username>
+						<password>HR</password>
+					</configuration>
+					
+				  </plugin>
+				</plugins>
+			  </build>
 	</profile>
+
+	<profile>
+		<id>prof2</id>
+			<build>
+				<plugins>
+				  <plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sql-maven-plugin</artifactId>
+					<version>1.5</version>
+					
+					<dependencies>
+						 <dependency>
+							<groupId>com.oracle.database.jdbc</groupId>
+							<artifactId>ojdbc8</artifactId>
+							<version>19.18.0.0</version>
+						</dependency>
+					</dependencies>			
+					
+				  </plugin>
+				</plugins>
+			  </build>
+	</profile>	
+	
 </profiles>
 	
-	<dependencies>
-		 <dependency>
-			<groupId>com.oracle.database.jdbc</groupId>
-			<artifactId>ojdbc8</artifactId>
-		</dependency>
-	</dependencies>
+
 </project>
