@@ -13,7 +13,8 @@
     <!-- must use "Liquibase" as the name for the publicly released artifact -->
     <name>Liquibase</name>
 
-	<project>
+<profiles>
+	<profile>
 		<build>
 			<plugins>
 			  <plugin>
@@ -30,7 +31,8 @@
 			  </plugin>
 			</plugins>
 		  </build>
-	</project>
+	</profile>
+</profiles>
 	
 	<dependencies>
 		 <dependency>
@@ -38,3 +40,4 @@
 			<artifactId>ojdbc8</artifactId>
 		</dependency>
 	</dependencies>
+</project>
