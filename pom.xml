@@ -37,12 +37,26 @@
 					<artifactId>liquibase-maven-plugin</artifactId>
 					<version>3.5.3</version>
 					<configuration>
-						<changelogfile>\Test\changelog\master.xml</changelogfile>
+						<changeLogFile>\Test\changelog\master.xml</changeLogFile>
 						<driver>oracle.jdbc.driver.OracleDriver</driver>
 						<url>jdbc:oracle:thin:@localhost:1521:xe</url>
 						<username>HR</username>
 						<password>HR</password>
+						<verbose>true</verbose>
+						<logging>debug</logging>
 					</configuration>
+					
+					<executions>
+						<execution>
+							<phase>Process</phase>
+							<goals>
+								<goal>update</goal>
+								<goal>clearCheckSums</goal>
+								<goal>updateSQL</goal>
+								<goal>tag</goal>
+							</goals>
+						<execution>
+					</executions>
 					
 				  </plugin>
 				</plugins>
