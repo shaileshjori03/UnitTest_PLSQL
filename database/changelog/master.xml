@@ -10,7 +10,7 @@
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
     <changeSet runAlways="true" author="jorisha" id="runtests"  runTransaction="true">
-        <sqlFile  path="book/script/lock_jobs.sql" splitStatements="false" />
+        <sqlFile  path="database/test/utPLSQL/run_test.sql" splitStatements="false" />
             <rollback></rollback>
     </changeSet>
 	
