@@ -55,7 +55,7 @@
 								<goal>updateSQL</goal>
 								<goal>tag</goal>
 							</goals>
-						<execution>
+						</execution>
 					</executions>
 					
 				  </plugin>
