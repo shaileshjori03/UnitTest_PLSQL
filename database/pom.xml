@@ -23,11 +23,7 @@
 			<goal>update</goal>
         </goals>
         <configuration>
-          <changeLogFile>\database\changelog\master.xml</changeLogFile>
-          <driver>oracle.jdbc.driver.OracleDriver</driver>
-          <url>jdbc:oracle:thin:@localhost:1521/xe</url>
-          <username>HR</username>
-          <password>HR</password>
+          <propertyFile>\database\liquibase.properties</propertyFile>
         </configuration>
       </execution>
     </executions>
