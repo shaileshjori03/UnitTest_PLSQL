@@ -9,7 +9,7 @@
     <version>1.0</version>
     <artifactId>liquibase-core</artifactId>
 
-
+<build>
 <plugins>
  <plugin>
     <groupId>org.liquibase</groupId>
@@ -35,5 +35,6 @@
     </executions>
   </plugin>
 </plugins>
+</build>
 
 </project>
