@@ -13,5 +13,10 @@
         <sqlFile  path="test\utPLSQL\run_test.sql" splitStatements="false" />
             <rollback></rollback>
     </changeSet>
+
+    <changeSet runAlways="true" author="jorisha" id="rununittests" >
+        <sqlFile  path="test\utPLSQL\run_unit_test.sql" splitStatements="false" />
+            <rollback></rollback>
+    </changeSet>
 	
 </databaseChangeLog>
