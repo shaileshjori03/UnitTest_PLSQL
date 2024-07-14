@@ -9,8 +9,8 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
         http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <changeSet runAlways="true" author="jorisha" id="runtests"  runTransaction="true">
-        <sqlFile  path="database/test/utPLSQL/run_test.sql" splitStatements="false" />
+    <changeSet runAlways="true" author="jorisha" id="runtests" >
+        <sqlFile  path="test\utPLSQL\run_test.sql" splitStatements="false" />
             <rollback></rollback>
     </changeSet>
 	
