@@ -1,9 +1,9 @@
 --liquibase formatted sql
---changeset shailesh:runtest
+--changeset shailesh:rununittest
 
 BEGIN
 
-	call ut.run('PKG_TEST');
+	ut.run('PKG_TEST');
 
 
 END;
