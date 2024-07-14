@@ -21,9 +21,6 @@
         <phase>process-resources</phase>
         <goals>
 			<goal>update</goal>
-			<goal>clearCheckSums</goal>
-			<goal>updateSQL</goal>
-			<goal>tag</goal>
         </goals>
         <configuration>
           <changeLogFile>\database\changelog\master.xml</changeLogFile>
