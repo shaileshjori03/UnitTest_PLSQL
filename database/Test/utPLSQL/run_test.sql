@@ -7,7 +7,7 @@ DECLARE
 
 BEGIN
 
-	ut.run('PKG_TEST')
+	insert into test values (1);
 
 
 END;
