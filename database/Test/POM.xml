@@ -50,7 +50,7 @@
                             <sources>
                                 <source>
                                     <!-- Path to project source files. -->
-                                    <directory>utPLSQL\sources</directory>
+                                    <directory>sources</directory>
                                     <!-- File patterns to include. -->
                                     <includes>
                                         <include>**/*pkg</include>
@@ -62,7 +62,7 @@
                             <tests>
                                 <test>
                                     <!-- Path to project test files. -->
-                                    <directory>utPLSQL\target</directory>
+                                    <directory>target</directory>
                                     <!-- File patterns to include. -->
                                     <includes>
                                         <include>**/*pkg</include>
