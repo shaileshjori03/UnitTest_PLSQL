@@ -1,67 +1,192 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>plsql-test</groupId>
-    <artifactId>plsql-uttest</artifactId>
-    <version>1.0</version>
-    <packaging>pom</packaging>
+
+    <groupId>org.my_org</groupId>
+    <artifactId>my-artifact-name</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+        <!-- URL of the connection to the database. -->
+        <!-- Can also be passed as execution parameters. -->
+        <!-- -DdbUrl="jdbc:oracle:thin:@127.0.0.1:1521:xe" -->
+        <dbUrl>jdbc:oracle:thin:@localhost:1521:xe</dbUrl>
+        <!-- Database connection user. -->
+        <!-- -DdbUser="user" -->
+        <dbUser>HR</dbUser>
+        <!-- Database connection password. -->
+        <!-- -DdbPassword="password" -->
+        <dbPass>HR</dbPass>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.utplsql</groupId>
                 <artifactId>utplsql-maven-plugin</artifactId>
-                <version>3.1.4</version>
-				
-                <configuration>
-				  <driver>oracle.jdbc.OracleDriver</driver>
-				  <url>jdbc:oracle:thin:@localhost:1521/xe</url>
-				  <username>HR</username>
-				  <password>HR</password>
-				  <promtOnNonLocalDatabase>false</promtOnNonLocalDatabase>
-				  <verbose>true</verbose>
-				  <logging>debug</logging>
-				  <delimiter>/</delimiter>
-				  <delimiterType>row</delimiterType>
-				  <keepFormat>true</keepFormat>
-                </configuration>
+                <version>3.1.11</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>test</goal>
                         </goals>
-						<configuration>
-							<paths>
-								<path>hr</path>
-							</paths>
-							<sources>
-								<source>
-									<directory>utPLSQL</directory>
-									<includes>
-										<include>**/*sql</include>
-									</includes>
-								</source>
-							</sources>
-							<tests>
-								<test>
-									<directory>target</directory>
-									<includes>
-										<include>**/*pkg</include>
-									</includes>
-								</test>
-							</tests>
-							
-							<ignoreFailure>true</ignoreFailure>
-							<skipCompatabilityCheck>false</skipCompatabilityCheck>
-							<reporters>
-								<reporter>UT_TEAMCITY_REPORTER</reporter>
-								<fileOutput>utPLSQL/coverage.html</fileOutput>
-							</reporters>
-							
-						</configuration>
+                        <configuration>
+                            <!-- REQUIRED PARAMETERS -->
+
+                            <!-- A list of tests suite paths. -->
+
+                            <!-- The path(s) can be in one of the following formats: -->
+                            <!--     schema[.package[.procedure]] -->
+                            <!--     schema:suite[.suite[.suite][...]][.procedure] -->
+                            <!-- Both formats can be mixed in the list. -->
+                            <!-- If only schema is provided, then all suites -->
+                            <!-- owned by that schema are executed. -->
+                            <paths>
+                                <path>schema_name</path>
+                            </paths>
+
+                            <sources>
+                                <source>
+                                    <!-- Path to project source files. -->
+                                    <directory>database\Test\utPLSQL\sources</directory>
+                                    <!-- File patterns to include. -->
+                                    <includes>
+                                        <include>**/*pkg</include>
+                                        <include>**/*pkb</include>
+                                    </includes>
+                                </source>
+                            </sources>
+
+                            <tests>
+                                <test>
+                                    <!-- Path to project test files. -->
+                                    <directory>database\Test\utPLSQL\target</directory>
+                                    <!-- File patterns to include. -->
+                                    <includes>
+                                        <include>**/*pkg</include>
+                                        <include>**/*pkb</include>
+                                    </includes>
+                                </test>
+                            </tests>
+
+                            <!-- OPTIONAL PARAMETERS -->
+
+                            <!-- Continue in case of failure. -->
+                            <!-- Defaults to: ${maven.test.failure.ignore} -->
+                            <ignoreFailure>false</ignoreFailure>
+
+                            <!-- Skip the utPLSQL version compatibility check. -->
+                            <!-- Defaults to: false -->
+                            <skipCompatibilityCheck>false</skipCompatibilityCheck>
+
+                            <!-- Skip the tests -->
+                            <!-- Defaults to: false -->
+                            <skipUtplsqlTests>false</skipUtplsqlTests>
+
+                            <!-- Enables DBMS_OUTPUT -->
+                            <!-- Defaults to: false -->
+                            <dbmsOutput>false</dbmsOutput>
+
+                            <!-- Sets a timeout around Reporter creation and retries when not ready after a while. -->
+                            <!-- 0 = no timeout. -->
+                            <oraStuckTimeout>0</oraStuckTimeout>
+
+                            <!-- A list of tags to run. -->
+                            <tags>
+                                <tag>test_tag</tag>
+                            </tags>
+
+                            <!-- Enables random order of test executions. -->
+                            <randomTestOrder>true</randomTestOrder>
+                            <!-- Sets the seed to use for random test execution order. If set, it sets -random to true. -->
+                            <randomTestOrderSeed>5</randomTestOrderSeed>
+
+                            <!-- Comma-separated object list to include in the coverage report. -->
+                            <!-- Format: [schema.]package[,[schema.]package ...]. -->
+                            <!-- See coverage reporting options in framework documentation. -->
+                            <!-- includeObject>app.test1,app.test2</includeObject>  -->
+
+                            <!-- Comma-separated object list to exclude from the coverage report. -->
+                            <!-- Format: [schema.]package[,[schema.]package ...]. -->
+                            <!-- See coverage reporting options in framework documentation. -->
+                            <!-- excludeObject>app.test1,app.test2</excludeObject>  -->
+
+                            <!-- Regular expression to match against schema name to include in coverage -->
+                            <!-- includeSchemaExpr>app.test1,app.test2</includeSchemaExpr>  -->
+
+                            <!-- Regular expression to match against schema name to exclude in coverage -->
+                            <!-- excludeSchemaExprr>app.test1,app.test2</excludeSchemaExprr>  -->
+
+                            <!-- Regular expression to match against schema name to include in coverage -->
+                            <!-- includeObjectExpr>app.test1,app.test2</includeObjectExpr>  -->
+
+                            <!-- Regular expression to match against object name to exclude in coverage -->
+                            <!-- excludeObjectExpr>app.test1,app.test2</excludeObjectExpr>  -->
+
+                            <!-- List of reporters. -->
+                            <!-- You can pass the name of the reporter and/or the output file -->
+                            <!-- of the reporter and/or if the report is logged to the console. -->
+                            <!-- If you don't pass any reporter, UT_DOCUMENTATION_REPORTER will be used. -->
+                            <!-- This is a current list of the names of the reporters, -->
+                            <!-- see UtPLSQL documentation in order to check the final list: -->
+                            <!--     UT_DOCUMENTATION_REPORTER -->
+                            <!--     UT_COVERAGE_HTML_REPORTER -->
+                            <!--     UT_TEAMCITY_REPORTER -->
+                            <!--     UT_XUNIT_REPORTER -->
+                            <!--     UT_COVERALLS_REPORTER -->
+                            <!--     UT_COVERAGE_SONAR_REPORTER -->
+                            <!--     UT_SONAR_TEST_REPORTER -->
+                            <reporters>
+                                <reporter>
+                                    <name>UT_COVERAGE_SONAR_REPORTER</name>
+                                    <!-- The file output path. -->
+                                    <fileOutput>utplsql/coverage-sonar-reporter.xml</fileOutput>
+                                    <!-- Indicates if should write to console. -->
+                                    <consoleOutput>true</consoleOutput>
+                                </reporter>
+                                <reporter>
+                                    <name>UT_SONAR_TEST_REPORTER</name>
+                                    <fileOutput>utplsql/sonar-test-reporter.xml</fileOutput>
+                                    <consoleOutput>false</consoleOutput>
+                                </reporter>
+                                <reporter>
+                                    <name>UT_TEAMCITY_REPORTER</name>
+                                </reporter>
+                            </reporters>
+
+                            <!-- Custom source code mapping options. -->
+                            <!-- See coverage reporting options in framework documentation. -->
+                            <sourcesOwner>code_owner</sourcesOwner>
+                            <sourcesRegexExpression>.*/\w+/(\w+)/(\w+)\.\w{3}</sourcesRegexExpression>
+                            <sourcesOwnerSubexpression>app</sourcesOwnerSubexpression>
+                            <sourcesNameSubexpression>2</sourcesNameSubexpression>
+                            <sourcesTypeSubexpression>1</sourcesTypeSubexpression>
+                            <sourcesCustomTypeMapping>
+                                <customTypeMapping>
+                                    <type>package body</type>
+                                    <customMapping>package_bodies</customMapping>
+                                </customTypeMapping>
+                            </sourcesCustomTypeMapping>
+
+                            <!-- Custom test code mapping options. -->
+                            <!-- See coverage reporting options in framework documentation. -->
+                            <testsOwner>tests_owner</testsOwner>
+                            <testsRegexExpression>.*/\w+/(\w+)/(\w+)\.\w{3}</testsRegexExpression>
+                            <testsOwnerSubexpression>test</testsOwnerSubexpression>
+                            <testsNameSubexpression>2</testsNameSubexpression>
+                            <testsTypeSubexpression>1</testsTypeSubexpression>
+                            <testsCustomTypeMapping>
+                                <customTypeMapping>
+                                    <type>package body</type>
+                                    <customMapping>package_bodies</customMapping>
+                                </customTypeMapping>
+                            </testsCustomTypeMapping>
+                        </configuration>
                     </execution>
-                </executions>            
+                </executions>
             </plugin>
         </plugins>
     </build>
-
 </project>
