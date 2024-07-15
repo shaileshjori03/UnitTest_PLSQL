@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.liquibase</groupId>
+	<packaging>pom</packaging>
+	<name>Liquibase-database-deployment</name>
+    <version>1.0</version>
+    <artifactId>liquibase-core</artifactId>
+
+    <properties>
+      <liquibase.oracle.url>jdbc:oracle:thin:@localhost:1521/xe</liquibase.oracle.url>
+      <liquibase.oracle.username>HR</liquibase.oracle.username>
+	  <liquibase.oracle.password>HR</liquibase.oracle.password>
+    </properties>
+
+<build>
+<plugins>
+ <plugin>
+    <groupId>org.liquibase</groupId>
+    <artifactId>liquibase-maven-plugin</artifactId>
+	<version>3.5.3</version>
+    <executions>
+      <execution>
+        <id>generate-mysql-full-install-script</id>
+        <phase>process-resources</phase>
+        <goals>
+			<goal>update</goal>
+			<goal>clearCheckSums</goal>
+			<goal>updateSQL</goal>
+			<goal>tag</goal>
+        </goals>
+        <configuration>
+          <changeLogFile>\database\changelog\master.xml</changeLogFile>
+          <driver>oracle.jdbc.OracleDriver</driver>
+          <url>jdbc:oracle:thin:@localhost:1521/xe</url>
+          <username>HR</username>
+          <password>HR</password>
+        </configuration>
+      </execution>
+    </executions>
+  </plugin>
+</plugins>
+</build>
+
+</project>
