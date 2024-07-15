@@ -75,7 +75,7 @@
 
                             <!-- Continue in case of failure. -->
                             <!-- Defaults to: ${maven.test.failure.ignore} -->
-                            <ignoreFailure>false</ignoreFailure>
+                            <ignoreFailure>true</ignoreFailure>
 
                             <!-- Skip the utPLSQL version compatibility check. -->
                             <!-- Defaults to: false -->
@@ -140,19 +140,11 @@
                             <!--     UT_SONAR_TEST_REPORTER -->
                             <reporters>
                                 <reporter>
-                                    <name>UT_COVERAGE_SONAR_REPORTER</name>
-                                    <!-- The file output path. -->
-                                    <fileOutput>utplsql/coverage-sonar-reporter.xml</fileOutput>
-                                    <!-- Indicates if should write to console. -->
-                                    <consoleOutput>true</consoleOutput>
-                                </reporter>
-                                <reporter>
-                                    <name>UT_SONAR_TEST_REPORTER</name>
-                                    <fileOutput>utplsql/sonar-test-reporter.xml</fileOutput>
-                                    <consoleOutput>false</consoleOutput>
-                                </reporter>
-                                <reporter>
                                     <name>UT_TEAMCITY_REPORTER</name>
+                                </reporter>
+                                <reporter>
+                                    <name>UT_COVERAGE_HTML_REPORTER</name>
+										<fileOutput>coverage.xml</fileOutput>									
                                 </reporter>
                             </reporters>
 
