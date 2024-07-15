@@ -160,7 +160,7 @@
                             <!-- See coverage reporting options in framework documentation. -->
                             <sourcesOwner>code_owner</sourcesOwner>
                             <sourcesRegexExpression>.*/\w+/(\w+)/(\w+)\.\w{3}</sourcesRegexExpression>
-                            <sourcesOwnerSubexpression>app</sourcesOwnerSubexpression>
+                            <sourcesOwnerSubexpression>1</sourcesOwnerSubexpression>
                             <sourcesNameSubexpression>2</sourcesNameSubexpression>
                             <sourcesTypeSubexpression>1</sourcesTypeSubexpression>
                             <sourcesCustomTypeMapping>
