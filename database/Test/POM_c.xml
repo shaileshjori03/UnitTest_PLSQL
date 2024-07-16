@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.obolus</groupId>
+    <artifactId>database</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.5.3</version>
+                <configuration>
+				  <changeLogFile>changelog\master.xml</changeLogFile>
+				  <driver>oracle.jdbc.OracleDriver</driver>
+				  <url>jdbc:oracle:thin:@localhost:1521/xe</url>
+				  <username>HR</username>
+				  <password>HR</password>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>status</goal>
+                        </goals>
+                    </execution>
+                </executions>            
+            </plugin>
+        </plugins>
+        <!-- resource filtering -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>19.18.0.0</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <ojdbc.driver.version>11.2.0.3</ojdbc.driver.version>
+        <liquibase.maven.plugin>3.3.2</liquibase.maven.plugin>
+        <logLevel>severe</logLevel>
+    </properties>
+</project>
