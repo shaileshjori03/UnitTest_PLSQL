@@ -87,7 +87,7 @@
 
                             <!-- Enables DBMS_OUTPUT -->
                             <!-- Defaults to: false -->
-                            <dbmsOutput>false</dbmsOutput>
+                            <dbmsOutput>true</dbmsOutput>
 
                             <!-- Sets a timeout around Reporter creation and retries when not ready after a while. -->
                             <!-- 0 = no timeout. -->
