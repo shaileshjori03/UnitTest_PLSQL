@@ -145,7 +145,7 @@
                                 </reporter>
                                 <reporter>
                                     <name>UT_COVERAGE_HTML_REPORTER</name>
-										<fileOutput>reports\coverage.html</fileOutput>									
+										<fileOutput>..\reports\coverage.html</fileOutput>								
                                 </reporter>
                             </reporters>
                         </configuration>
