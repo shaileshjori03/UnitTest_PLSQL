@@ -141,7 +141,7 @@
                             <reporters>
                                 <reporter>
                                     <name>UT_TEAMCITY_REPORTER</name>
-									<!--fileOutput>reports\testreport.html</fileOutput> -->
+									<fileOutput>..\reports\testreport.html</fileOutput>
                                 </reporter>
                                 <reporter>
                                     <name>UT_COVERAGE_HTML_REPORTER</name>
