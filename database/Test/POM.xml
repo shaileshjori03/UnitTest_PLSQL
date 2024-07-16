@@ -53,9 +53,9 @@
                                     <directory>sources</directory>
                                     <!-- File patterns to include. -->
                                     <includes>
-                                        <include>**/*pkg</include>
-                                        <include>**/*pkb</include>
-										<include>**/*sql</include>
+                                        <include>**pkg</include>
+                                        <include>**pkb</include>
+										<include>**sql</include>
                                     </includes>
                                 </source>
                             </sources>
@@ -66,9 +66,9 @@
                                     <directory>target</directory>
                                     <!-- File patterns to include. -->
                                     <includes>
-                                        <include>**/*pkg</include>
-                                        <include>**/*pkb</include>
-										<include>**/*sql</include>
+                                        <include>**pkg</include>
+                                        <include>**pkb</include>
+										<include>**sql</include>
                                     </includes>
                                 </test>
                             </tests>
