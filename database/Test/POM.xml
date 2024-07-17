@@ -66,9 +66,9 @@
                                     <directory>target</directory>
                                     <!-- File patterns to include. -->
                                     <includes>
-                                        <include>**/*pkg</include>
-                                        <include>**/*pkb</include>
-										<include>**/*sql</include>
+                                        <!--include>**/*pkg</include> -->
+                                        <!--include>**/*pkb</include> -->
+										<!--include>test123_pkg_test.pkg</include> -->
                                     </includes>
                                 </test>
                             </tests>
@@ -93,17 +93,17 @@
 
                             <!-- Sets a timeout around Reporter creation and retries when not ready after a while. -->
                             <!-- 0 = no timeout. -->
-                            <oraStuckTimeout>0</oraStuckTimeout>
+                            <!--oraStuckTimeout>0</oraStuckTimeout> -->
 
                             <!-- A list of tags to run. -->
-                            <tags>
-                                <tag>test_tag</tag>
-                            </tags>
+                            <!--tags> -->
+                                <!--tag>test_tag</tag> -->
+                            <!--/tags> -->
 
                             <!-- Enables random order of test executions. -->
-                            <randomTestOrder>true</randomTestOrder>
+                            <!--randomTestOrder>true</randomTestOrder> -->
                             <!-- Sets the seed to use for random test execution order. If set, it sets -random to true. -->
-                            <randomTestOrderSeed>5</randomTestOrderSeed>
+                            <!--randomTestOrderSeed>5</randomTestOrderSeed> -->
 
                             <!-- Comma-separated object list to include in the coverage report. -->
                             <!-- Format: [schema.]package[,[schema.]package ...]. -->
@@ -142,12 +142,14 @@
                             <!--     UT_SONAR_TEST_REPORTER -->
                             <reporters>
                                 <reporter>
-                                    <name>UT_TEAMCITY_REPORTER</name>
+                                    <name>UT_DOCUMENTATION_REPORTER</name>
 									<fileOutput>..\reports\testreport.html</fileOutput>
+									<consoleOutput>true</consoleOutput>
                                 </reporter>
                                 <reporter>
                                     <name>UT_COVERAGE_HTML_REPORTER</name>
-										<fileOutput>..\reports\coverage.html</fileOutput>								
+										<fileOutput>..\reports\coverage.html</fileOutput>
+										<consoleOutput>true</consoleOutput>
                                 </reporter>
                             </reporters>
                         </configuration>
