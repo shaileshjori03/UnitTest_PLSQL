@@ -44,7 +44,7 @@
                             <!-- If only schema is provided, then all suites -->
                             <!-- owned by that schema are executed. -->
                             <paths>
-                                <path>HR</path>
+                                <path>HR[.test_pkg_test[.prc2_test]]</path>
                             </paths>
 
                             <sources>
