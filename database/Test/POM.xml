@@ -66,8 +66,8 @@
                                     <directory>target</directory>
                                     <!-- File patterns to include. -->
                                     <includes>
-                                        <!--include>**/*pkg</include> -->
-                                        <!--include>**/*pkb</include> -->
+                                        <include>**/*pkg</include>
+                                        <include>**/*pkb</include>
 										<!--include>test123_pkg_test.pkg</include> -->
                                     </includes>
                                 </test>
