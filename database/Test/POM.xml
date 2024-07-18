@@ -142,14 +142,14 @@
                             <!--     UT_SONAR_TEST_REPORTER -->
                             <reporters>
                                 <reporter>
-                                    <name>UT_DOCUMENTATION_REPORTER</name>
-									<fileOutput>..\reports\testreport.html</fileOutput>
-									<consoleOutput>true</consoleOutput>
+                                    <name>UT_TEAMCITY_REPORTER</name>
+									<!--fileOutput>..\reports\testreport.html</fileOutput> -->
+									<!--consoleOutput>true</consoleOutput> -->
                                 </reporter>
                                 <reporter>
                                     <name>UT_COVERAGE_HTML_REPORTER</name>
 										<fileOutput>..\reports\coverage.html</fileOutput>
-										<consoleOutput>true</consoleOutput>
+										<!--consoleOutput>true</consoleOutput> -->
                                 </reporter>
                             </reporters>
                         </configuration>
